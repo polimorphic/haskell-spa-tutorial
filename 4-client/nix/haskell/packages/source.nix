@@ -20,6 +20,12 @@ let
     );
 in
 {
+  miso = fetchFromGitHub {
+    owner = "tysonzero";
+    repo = "miso";
+    sha256 = "0cb8rxm3d3rx65dnin3c16lq924pqm2lcfip18q4kn8x1kkpvyba";
+    rev = "d8a9854d26ae7235666e36ec99d5048842bef0ad";
+  };
   todo = cleanSourceWith {
     src = ../../../.;
     filter = filteredSrc;
