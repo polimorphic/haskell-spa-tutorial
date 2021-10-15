@@ -14,7 +14,7 @@ We are going to need a few dependencies to do this, which we will add to [todo.c
 
 * warp: to run our web server
 
-We also enable `DataKinds` as `servant` uses it, and `OverloadedStrigns` and
+We also enable `DataKinds` as `servant` uses it, and `OverloadedStrings` and
 `TypeApplications` to make our code cleaner.
 
 Next we move `src/Todo.hs` to [src/Todo/Web/Server.hs](src/Todo/Web/Server.hs) and define our
