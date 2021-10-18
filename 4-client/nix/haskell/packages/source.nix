@@ -21,10 +21,10 @@ let
 in
 {
   miso = fetchFromGitHub {
-    owner = "tysonzero";
+    owner = "dmjio";
     repo = "miso";
-    sha256 = "0cb8rxm3d3rx65dnin3c16lq924pqm2lcfip18q4kn8x1kkpvyba";
-    rev = "d8a9854d26ae7235666e36ec99d5048842bef0ad";
+    sha256 = "05vb4yc45g7gmfykwd54cfnv91igmzfh232h46fhh99skfw0388y";
+    rev = "9e394bd7700c40af7df8367a91f7a0ff6470ef1a";
   };
   todo = cleanSourceWith {
     src = ../../../.;
