@@ -11,4 +11,4 @@ main :: IO ()
 main = do
     allJsHash <- hash <$> readFile "static/all.js"
     let extra = script_ [src_ $ "/static/all.js?" <> T.pack (show allJsHash)] ("" :: String)
-    run 3438 $ server extra
+    run 3438 =<< server extra

@@ -1,6 +1,5 @@
 module Todo.Web.Server.JSaddle (main) where
 
-import Control.Monad ((<=<))
 import Language.Javascript.JSaddle.Warp (jsaddleJs, jsaddleOr)
 import Lucid (script_)
 import Network.Wai.Handler.Warp (run)
@@ -12,4 +11,4 @@ import Todo.Web.Server
 main :: IO ()
 main = do
     let extra = script_ [] $ jsaddleJs False
-    run 3438 <=< jsaddleOr defaultConnectionOptions C.main $ server extra
+    run 3438 =<< jsaddleOr defaultConnectionOptions C.main =<< server extra

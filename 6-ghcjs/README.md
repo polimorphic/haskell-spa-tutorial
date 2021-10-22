@@ -1,15 +1,10 @@
 Step 6 - Building with GHCJS
 ============================
 
-(Starting from Step 4)
-
 For deployment purposes we need to use GHCJS instead of jsaddle.
 
 We start by editing the [nix](nix) directory and [default.nix](default.nix) as well as
 adding [shell-ghcjs.nix](shell-ghcjs.nix), but we will again gloss over this for now.
-
-We then add `DeriveGeneric` and `TypeOperators` to [todo.cabal](todo.cabal) as `servant`
-uses them to specify multiple routes with different paths.
 
 We also break up our dependencies and modules into server/ghc-only and shared sections, so
 that ghcjs doesn't have to build server-side code, particularly code that depends on C.
@@ -17,13 +12,8 @@ that ghcjs doesn't have to build server-side code, particularly code that depend
 There is one package that we specify as ghcjs-only, and that is `ghcjs-base`. When compiled
 with ghc, `jsaddle` will provide the same modules that it provides.
 
-We also add `hashable` as a dependency so that we can easily cache-bust our generated js file.
-
-Next we replace `main :: IO ()` with `server :: Html () -> Application` in
+Next we replace `main :: IO ()` with `server :: Html () -> IO Application` in
 [src/Todo/Web/Server.hs](src/Todo/Web/Server.hs) and remove the `jsaddleOr` and `jsaddleJs`.
-
-We then also serve up our `static` directory under `/static` so that we can do things like
-server javascript files.
 
 We then create [src/Todo/Web/Server/JSaddle](src/Todo/Web/Server/JSaddle.hs) which calls
 `server` and uses `jsaddleJs` and `jsaddleOr` to replicate the old behavior.

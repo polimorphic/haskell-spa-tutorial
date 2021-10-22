@@ -10,6 +10,7 @@ self: super: {
           --jscomp_off=checkVars \
           --externs=${todo}/bin/todo-js.jsexe/all.js.externs \
           ${todo}/bin/todo-js.jsexe/all.js > temp.js
+        cp -r $src/static $out/
         mv temp.js $out/static/all.js
       '';
     };
