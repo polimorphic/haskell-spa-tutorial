@@ -1,0 +1,16 @@
+* {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background: none;
+    border: 0;
+    box-sizing: border-box;
+    color: inherit;
+    font: inherit;
+    font-size: 100%;
+    margin: 0;
+    outline: none;
+    padding: 0;
+    text-decoration: none;
+    vertical-align: baseline;
+}
