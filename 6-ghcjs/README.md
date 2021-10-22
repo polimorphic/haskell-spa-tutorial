@@ -1,5 +1,7 @@
-Step 5 - Building with GHCJS
+Step 6 - Building with GHCJS
 ============================
+
+(Starting from Step 4)
 
 For deployment purposes we need to use GHCJS instead of jsaddle.
 
