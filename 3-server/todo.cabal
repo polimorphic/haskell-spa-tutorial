@@ -9,7 +9,7 @@ executable todo
   default-language:    Haskell2010
   hs-source-dirs:      app
   ghc-options:         -O2 -Wall -Werror -threaded -rtsopts
-  build-depends:       base >=4.12.0 && <4.13
+  build-depends:       base >=4.14.3 && <4.15
                      , todo
 
 library
@@ -20,9 +20,9 @@ library
   default-extensions:  DataKinds
                      , OverloadedStrings
                      , TypeApplications
-  build-depends:       base >=4.12.0 && <4.13
+  build-depends:       base >=4.14.3 && <4.15
                      , lucid >=2.9.11 && <2.10
-                     , servant-lucid >=0.8.1 && <0.9
-                     , servant-server ==0.15.*
-                     , warp >=3.2.27 && <3.3
+                     , servant-lucid >=0.9.0 && <0.10
+                     , servant-server >=0.18.3 && <0.19
+                     , warp >=3.3.17 && <3.4
   exposed-modules:     Todo.Web.Server

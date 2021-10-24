@@ -3,8 +3,8 @@ let
 in pkgs.buildEnv {
   name = "todo";
   paths =
-  [ pkgs.haskell.packages.ghc865.todo
-    pkgs.haskell.packages.ghcjs86.todo
+  [ pkgs.haskell.packages.ghc8107.todo
+    pkgs.haskell.packages.ghcjs810.todo
     pkgs.todo-js
   ];
 }
