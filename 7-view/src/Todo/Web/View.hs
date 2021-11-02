@@ -46,7 +46,7 @@ view = div_ [style_ containerStyle]
         ]
     ]
   where
-    checkUrl = "https://s3-us-east-2.amazonaws.com/polimorphic-sha256/1fa2ae761e0a49be44160a14f7336125d1ecac235888620712e8fbdc77514824.svg"
+    checkUrl = "/static/check.svg"
     entries =
         [ (False, "Give local government it\'s biggest software update")
         , (True, "Start learning the codebase")
