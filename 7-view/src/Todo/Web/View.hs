@@ -54,7 +54,7 @@ view = div_ [style_ containerStyle]
         , (True, "Join Polimorphic!")
         , (False, "Build the virtual townhall!")
         ]
-    
+
 checkStyle :: Bool -> Map MisoString MisoString
 checkStyle checked =
     [ ("background-color", bool "white" "#27AAE1" checked)
@@ -91,7 +91,7 @@ flexVAlignStyle =
     ]
 
 titleStyle :: Map MisoString MisoString
-titleStyle = [ ("font-size", "32px") ]
+titleStyle = [("font-size", "32px")]
 
 todoStyle :: Map MisoString MisoString
 todoStyle = [("margin-bottom", "10px")] <> flexVAlignStyle
@@ -103,4 +103,4 @@ todoDescriptionStyle completed =
     ] <> bool [] [("text-decoration", "line-through")] completed
 
 todosStyle :: Map MisoString MisoString
-todosStyle = [ ("margin", "20px auto") ]
+todosStyle = [("margin", "20px auto")]
