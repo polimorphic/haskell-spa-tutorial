@@ -1,5 +1,3 @@
-{-# LANGUAGE OverloadedLists, OverloadedStrings #-}
-
 module Todo.Web.View (view) where
 
 import Control.Lens ((<&>))

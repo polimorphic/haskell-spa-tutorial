@@ -45,6 +45,7 @@ library
   default-language:    Haskell2010
   default-extensions:  DataKinds
                      , DeriveGeneric
+                     , OverloadedLists
                      , OverloadedStrings
                      , TypeApplications
                      , TypeOperators
