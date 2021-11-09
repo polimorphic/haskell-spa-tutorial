@@ -1,0 +1,84 @@
+name:                todo
+version:             0.0.0.0
+license-file:        LICENSE
+build-type:          Simple
+cabal-version:       >=1.10
+
+executable todo
+  main-is:             Main.hs
+  default-language:    Haskell2010
+  if impl(ghcjs)
+    buildable: False
+  else
+    hs-source-dirs:      app
+    ghc-options:         -O2 -Wall -Werror -threaded -rtsopts
+    build-depends:       base >=4.14.3 && <4.15
+                       , todo
+
+executable todo-dev
+  main-is:             Dev.hs
+  default-language:    Haskell2010
+  if impl(ghcjs)
+    buildable: False
+  else
+    hs-source-dirs:      app
+    ghc-options:         -O2 -Wall -Werror -threaded -rtsopts
+    build-depends:       base >=4.14.3 && <4.15
+                       , todo
+
+executable todo-js
+  main-is:             JS.hs
+  default-language:    Haskell2010
+  if !impl(ghcjs)
+    buildable: False
+  else
+    hs-source-dirs:      app
+    ghc-options:         -O2 -Wall -Werror -threaded -rtsopts
+    ghcjs-options:       -dedupe
+    cpp-options:         -DGHCJS_BROWSER
+    build-depends:       base >=4.14.3 && <4.15
+                       , todo
+
+library
+  hs-source-dirs:      src
+  ghc-options:         -O2 -Wall -Werror
+  default-language:    Haskell2010
+  default-extensions:  DataKinds
+                     , DeriveAnyClass
+                     , DeriveGeneric
+                     , OverloadedLists
+                     , OverloadedStrings
+                     , TemplateHaskell
+                     , TypeApplications
+                     , TypeOperators
+
+  build-depends:       aeson >=1.5.6.0 && <1.5.7
+                     , base >=4.14.3 && <4.15
+                     , containers >=0.6.5 && <0.7
+                     , jsaddle >=0.9.8 && <0.10
+                     , lens >=4.19.2 && <4.20
+                     , miso >=1.8.0 && <1.9
+                     , servant >=0.18.3 && <0.19
+                     , text >=1.2.4 && <1.3
+
+  if !impl(ghcjs)
+    build-depends:     hashable >=1.3.0 && <1.4
+                     , jsaddle-warp >=0.9.8 && <0.10
+                     , lucid >=2.9.11 && <2.10
+                     , servant-lucid >=0.9.0 && <0.10
+                     , servant-server >=0.18.3 && <0.19
+                     , wai >=3.2.2 && <3.3
+                     , warp >=3.3.17 && <3.4
+                     , websockets >=0.12.7 && <0.13
+  else
+    build-depends:     ghcjs-base >=0.2.0 && <0.3
+
+  exposed-modules:     Todo.Web.Client
+                     , Todo.Web.Handler
+                     , Todo.Web.State
+                     , Todo.Web.View
+
+  if !impl(ghcjs)
+    exposed-modules:   Todo.Web.Server
+                     , Todo.Web.Server.GHCJS
+                     , Todo.Web.Server.JSaddle
