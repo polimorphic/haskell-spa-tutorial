@@ -14,3 +14,14 @@ h1, h2, h3, p, div {
     text-decoration: none;
     vertical-align: baseline;
 }
+
+button {
+    color: white; 
+    background-color: #27AAE1;
+    border: 0px;
+    border-radius: 5px;
+}
+
+.red-text {
+    color: red;
+}
