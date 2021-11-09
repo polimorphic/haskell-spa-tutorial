@@ -3,41 +3,13 @@ module Todo.Web.View (view) where
 import Control.Lens ((<&>), (^.), (%~), _1, ix, itoList)
 import Data.Bool
 import Data.Map
-import Miso (View, checked_, div_, h1_, img_, input_, onClick, p_, src_, style_, text, type_)
+import Miso (View, div_, h1_, img_, onClick, p_, src_, style_, text)
 import Miso.String hiding (length)
 import Todo.Web.State
 
 view :: State -> View Action
 view s = div_ [style_ containerStyle]
-    [ h1_ [style_ titleStyle] ["Weekly Todo List (Simple Check)"]
-    , div_ [style_ todosStyle]
-        [ div_ [style_ todoStyle]
-            [ input_ [checked_ True, type_ "checkbox"]
-            , p_ [style_ $ todoDescriptionStyle True]
-                ["Interview for an open position"]
-            ]
-        , div_ [style_ todoStyle]
-            [ input_ [checked_ True, type_ "checkbox"]
-            , p_ [style_ $ todoDescriptionStyle True]
-                ["Join Polimorphic!"]
-            ]
-        , div_ [style_ todoStyle]
-            [ input_ [type_ "checkbox"]
-            , p_ [style_ $ todoDescriptionStyle False]
-                ["Build the virtual townhall!"]
-            ]
-        , div_ [style_ todoStyle]
-            [ input_ [type_ "checkbox"]
-            , p_ [style_ $ todoDescriptionStyle False]
-                ["Give local government it's biggest software update"]
-            ]
-        , div_ [style_ todoStyle]
-            [ input_ [checked_ True, type_ "checkbox"]
-            , p_ [style_ $ todoDescriptionStyle True]
-                ["Start learning the codebase"]
-            ]
-        ]
-    , h1_ [style_ titleStyle] ["Weekly Todo List (Custom Check)"]
+    [ h1_ [style_ titleStyle] ["Weekly Todo List"]
     , p_ [] [text $ (ms . show . length $ s ^. sTodos) <> " entries"]
     , div_ [style_ todosStyle] $ itoList (s ^. sTodos) <&> \(i, (active, description)) -> div_
         [style_ todoStyle]
