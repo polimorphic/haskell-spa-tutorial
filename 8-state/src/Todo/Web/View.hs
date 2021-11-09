@@ -1,9 +1,11 @@
 module Todo.Web.View (view) where
 
-import Control.Lens ((<&>), (^.), (%~), _1, ix, itoList)
+import Control.Lens ((<&>), (^.), (%~),(.~), _1, ix, itoList)
 import Data.Bool
 import Data.Map
-import Miso (View, div_, h1_, img_, onClick, p_, src_, style_, text)
+import Data.Maybe (fromMaybe)
+import Text.Read (readMaybe)
+import Miso (View, div_, h1_, input_, type_, img_, onClick, onInput, p_, src_, style_, text)
 import Miso.String hiding (length)
 import Todo.Web.State
 
@@ -17,10 +19,18 @@ view s = div_ [style_ containerStyle]
             img_ [src_ checkUrl, style_ checkWhiteStyle]
         , p_ [style_ $ todoDescriptionStyle active] [text description]
         ]
+    , h1_ [style_ titleStyle] ["Inventory Status"]
+    , div_ [style_ todosStyle] $ itoList (s ^. sInventory) <&> \(i, (_, description)) -> div_
+        [style_ todoStyle]
+        [ div_ []
+            [ input_ [type_ "number", onInput $ \x -> Modify $ sInventory . ix i ._1 .~ fromMaybe 0 (readMaybe $ fromMisoString x)] 
+            , p_ [] [text description]
+            ]
+        ]
+    , p_ [] [text $ (ms . show . sum $ (\(cnt, _) -> cnt) <$> (s ^. sInventory)) <> " total"]
     ]
   where
     checkUrl = "/static/check.svg"
-        
 
 checkStyle :: Bool -> Map MisoString MisoString
 checkStyle checked =
