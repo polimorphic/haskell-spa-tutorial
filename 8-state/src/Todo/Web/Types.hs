@@ -6,10 +6,10 @@ module Todo.Web.Types
     , mkState
     ) where
 
-import Control.Lens
-import Data.Aeson
+import Control.Lens (makeLenses)
+import Data.Aeson (FromJSON, ToJSON)
 import GHC.Generics (Generic)
-import Miso.String
+import Miso.String (MisoString)
 
 type Todo = (Bool, MisoString)
 type Inventory = (Int, MisoString)

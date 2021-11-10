@@ -10,7 +10,7 @@ import Miso
     , logLevel, miso, model, mountPoint, subs, update
     )
 import qualified Miso
-import Miso.String
+import Miso.String (MisoString)
 
 import Todo.Web.Handler
 import Todo.Web.Types

@@ -1,12 +1,12 @@
 module Todo.Web.View (view) where
 
-import Control.Lens ((<&>), (^.), (%~),(.~), _1, ix, itoList)
-import Data.Bool
-import Data.Map
+import Control.Lens ((<&>), (^.), (%~), (.~), _1, ix, itoList)
+import Data.Bool (bool)
+import Data.Map (Map)
 import Data.Maybe (fromMaybe)
 import Text.Read (readMaybe)
 import Miso (View, div_, h1_, input_, type_, img_, onClick, onInput, p_, src_, style_, text)
-import Miso.String hiding (length)
+import Miso.String (MisoString, fromMisoString, ms)
 
 import Todo.Web.Types
 
