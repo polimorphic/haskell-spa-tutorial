@@ -2,7 +2,7 @@ module Todo.Web.Handler (handler) where
 
 import Miso (Effect)
 
-import Todo.Web.State
+import Todo.Web.Types
 
 handler :: Action -> State -> Effect Action State
 handler a s = case a of

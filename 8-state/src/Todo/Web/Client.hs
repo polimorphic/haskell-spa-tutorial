@@ -13,7 +13,7 @@ import qualified Miso
 import Miso.String
 
 import Todo.Web.Handler
-import Todo.Web.State
+import Todo.Web.Types
 import Todo.Web.View
 
 main :: JSM ()

@@ -14,7 +14,7 @@ import Servant.API.Generic ((:-))
 import Servant.Server.Generic (genericServe)
 import Servant.HTML.Lucid (HTML)
 
-import Todo.Web.State
+import Todo.Web.Types
 import Todo.Web.View
 
 server :: Html () -> IO Application

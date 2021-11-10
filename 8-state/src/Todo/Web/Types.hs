@@ -1,4 +1,4 @@
-module Todo.Web.State
+module Todo.Web.Types
     ( Action(..)
     , State(..)
     , sTodos

@@ -75,7 +75,7 @@ library
 
   exposed-modules:     Todo.Web.Client
                      , Todo.Web.Handler
-                     , Todo.Web.State
+                     , Todo.Web.Types
                      , Todo.Web.View
 
   if !impl(ghcjs)

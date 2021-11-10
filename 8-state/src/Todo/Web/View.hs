@@ -7,7 +7,8 @@ import Data.Maybe (fromMaybe)
 import Text.Read (readMaybe)
 import Miso (View, div_, h1_, input_, type_, img_, onClick, onInput, p_, src_, style_, text)
 import Miso.String hiding (length)
-import Todo.Web.State
+
+import Todo.Web.Types
 
 view :: State -> View Action
 view s = div_ [style_ containerStyle]
