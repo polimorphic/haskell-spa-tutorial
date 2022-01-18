@@ -2,7 +2,7 @@ Step 2 - Initial nix setup
 ==========================
 
 We want to tightly and safely manage our compilers and packages and ensure reliable builds,
-so we use nix as our package manager.
+so we use nix as our package manager. You can install nix from the [website](https://nixos.org/download.html#nix-install-macos).
 
 This is particularly important due to our need to use both ghc and ghcjs simultaneously,
 as well as non-haskell tools like the closure compiler.
