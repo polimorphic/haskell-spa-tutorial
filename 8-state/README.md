@@ -5,7 +5,7 @@ Our View already tells our data model that we have a list of checkboxes. Now whe
 
 We need to do a few things with our State to accomplish this. 
 1. Need to initialize a State 
-    i. We do this by setting a variable, window.state, in our Server file. When we edit things this state will update
+    i. We do this by setting a variable, window.state, in our Server. When we edit things this state will update
     ii. Create a mkState method in Types.hs to initialize the values. 
 2. Need to have the ability to use the State for rendering 
     i. We use the Control.Lens library to automatically have getters and setters, which we can do be calling the makeLenses function in Types.hs. 
@@ -18,10 +18,10 @@ We need to do a few things with our State to accomplish this.
         ]
     ```
 3. Need to have the ability to modify the State. 
-    i. In our Handler, we define the actions Modify and NoOp. Note 
+    i. In our Handler, we define the actions Modify and NoOp. You could also define more complicated actions in your handler that then use some combination of Modify and NoOp.
         a. Modify function takes in a function and modifies the state (type state -> state)
         b. NoOp -> returns you the state
-    ii. We can then use the Modify action to update our state. For example, in the following code: 
+    ii. We can then use the Modify action to update our state from our View. For example, in the following code: 
     `[ input_ [type_ "number", onInput $ \x -> Modify $ sInventory . ix i ._1 .~ fromMaybe 0 (readMaybe $ fromMisoString x)] `
     We take the input value and use it to Update the data stored in `sInventory`. Along the way we must adjust the types to be able to use the proper functions, for example the `value` is of type MisoString, so we must call fromMisoString to use the readMaybe function. The readMaybe function allows us to access the Int value of the String x, if it exists. 
     
