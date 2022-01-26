@@ -5,10 +5,10 @@ Our View already tells our data model that we have a list of checkboxes. Now whe
 
 We need to do a few things with our State to accomplish this. 
 1. Need to initialize a State 
-    i. We do this by setting a variable, window.state. When we edit things this state will update  
-    ii. Create a makeState method to initialize the values. 
+    i. We do this by setting a variable, window.state, in our Server file. When we edit things this state will update
+    ii. Create a mkState method in Types.hs to initialize the values. 
 2. Need to have the ability to use the State for rendering 
-    i. We use the Control.Lens library to automatically have getters and setters. 
+    i. We use the Control.Lens library to automatically have getters and setters, which we can do be calling the makeLenses function in Types.hs. 
     ii. In the View, use these getters and interface them with the HTML we are writing. In the example below, we use `itoList` to loop through the list we retrieve from the `sTodos` via the `^.` with an index.
     ```
     div_ [style_ todosStyle] $ itoList (s ^. sTodos) <&> \(i, (active, description)) -> div_
@@ -18,7 +18,7 @@ We need to do a few things with our State to accomplish this.
         ]
     ```
 3. Need to have the ability to modify the State. 
-    i. In our Handler, we define the actions Modify and NoOp. 
+    i. In our Handler, we define the actions Modify and NoOp. Note 
         a. Modify function takes in a function and modifies the state (type state -> state)
         b. NoOp -> returns you the state
     ii. We can then use the Modify action to update our state. For example, in the following code: 
