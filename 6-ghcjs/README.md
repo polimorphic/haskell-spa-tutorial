@@ -33,3 +33,12 @@ You can now run `result/bin/todo-dev` to run the previous jsaddle server+client 
 or run `result/bin/todo` to run solely the server and serve the client via a js file. Note
 that without a symlink you need to cd into `result` before running so that `static` is in
 your current directory.
+
+Note: if you are receiving github timeout errors when runnin the above commands, try using the nix shell instead:
+
+`$ nix-shell`
+`\[nix-shell:/6-ghcjs\]$ cabal new-repl`
+`*Todo.Web.Client> import qualified Todo.Web.Server.JSaddle`
+`*Todo.Web.Client Todo.Web.Server.JSaddle> Todo.Web.Server.JSaddle.main`
+go to http://localhost:3438 in browser -> see Todo
+
